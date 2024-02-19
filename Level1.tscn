@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://duduk273sefqk"]
+
+[ext_resource type="Texture2D" uid="uid://fsbghqaqfrw5" path="res://src/Levels/Level1/Location1.png" id="1_p67hf"]
+[ext_resource type="PackedScene" uid="uid://itmanpiqpom7" path="res://Controller.tscn" id="2_b3d11"]
+[ext_resource type="Script" path="res://Button.gd" id="3_dvbof"]
+[ext_resource type="Texture2D" uid="uid://buadicnpqmdtt" path="res://src/Levels/Level1/pismo.png" id="4_f86qs"]
+[ext_resource type="Texture2D" uid="uid://dr3l6siyh08s4" path="res://src/MainMenu/Panel.png" id="4_ifkcs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dopr"]
+size = Vector2(894, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr27g"]
+size = Vector2(1277.5, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gh7tx"]
+size = Vector2(79, 170)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_16p6j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tgnf"]
+texture = ExtResource("4_ifkcs")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_p67hf")
+centered = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(412, 270)
+shape = SubResource("RectangleShape2D_3dopr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1478, 253.5)
+shape = SubResource("RectangleShape2D_3dopr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1287, 273)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3dopr")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3, 324)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3dopr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(642.25, 717)
+shape = SubResource("RectangleShape2D_pr27g")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(634, -12)
+shape = SubResource("RectangleShape2D_pr27g")
+
+[node name="Player" parent="." instance=ExtResource("2_b3d11")]
+position = Vector2(639, 414)
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("panel", "message_window")]
+script = ExtResource("3_dvbof")
+panel = NodePath("../Panel")
+message_window = NodePath("../Pismo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(630, 147)
+shape = SubResource("RectangleShape2D_gh7tx")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+position = Vector2(625, 152)
+scale = Vector2(8.00003, 11)
+texture = SubResource("PlaceholderTexture2D_16p6j")
+
+[node name="Pismo" type="TextureRect" parent="."]
+visible = false
+offset_left = 798.0
+offset_top = 52.0
+offset_right = 1250.0
+offset_bottom = 652.0
+texture = ExtResource("4_f86qs")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 578.0
+offset_top = 27.0
+offset_right = 682.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0tgnf")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -11.5
+offset_right = 27.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press E"
+horizontal_alignment = 1
+vertical_alignment = 1

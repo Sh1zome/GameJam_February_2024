@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dke38qtjdqkk7"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_jl20e"]
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_jl20e")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SettingsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="SettingsMenu"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="BrightnessSlider" type="HSlider" parent="SettingsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0

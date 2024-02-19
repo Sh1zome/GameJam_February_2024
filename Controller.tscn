@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://itmanpiqpom7"]
+
+[ext_resource type="PackedScene" uid="uid://bda5ngt3nlv7r" path="res://Player.tscn" id="1_v5csv"]
+[ext_resource type="PackedScene" uid="uid://bluc6ag653kwb" path="res://Camera.tscn" id="2_0gg2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq1hi"]
+size = Vector2(196, 216)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_v5csv")]
+motion_mode = 1
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("target", "collision") instance=ExtResource("2_0gg2x")]
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+target = NodePath("../Player")
+collision = NodePath("../CameraBounds")
+
+[node name="CameraBounds" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds"]
+shape = SubResource("RectangleShape2D_bq1hi")

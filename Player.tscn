@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bda5ngt3nlv7r"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_txi3b"]
+[ext_resource type="Texture2D" uid="uid://baly5neebeb3q" path="res://src/Player/Ghost1.png" id="2_s0bk0"]
+[ext_resource type="Texture2D" uid="uid://cabumpjdphapk" path="res://src/MainMenu/Ghost2.png" id="3_4cksc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_irglt"]
+height = 36.4444
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2td4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s0bk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4cksc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite")]
+scale = Vector2(4.5, 4.5)
+script = ExtResource("1_txi3b")
+Sprite = NodePath("Node2D/PlayerSprite")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_irglt")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Node2D"]
+scale = Vector2(0.155556, 0.155556)
+sprite_frames = SubResource("SpriteFrames_p2td4")
